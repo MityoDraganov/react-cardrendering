@@ -1,5 +1,5 @@
 
-import moviesData from "../Film"
+//import moviesData from "../Film"
 import Movie from "./Movie";
 import {useState, useEffect} from 'react'
 
@@ -7,8 +7,17 @@ import {useState, useEffect} from 'react'
 function  MovieList(
 ){
 
-    const [movies, setMovies] = useState(moviesData)
+    const [movies, setMovies] = useState([])
 
+    useEffect(() =>{
+        fetch('http://localhost:3000/Film.json')
+        .then(data => data.json())
+        .then(data =>{
+            setMovies(data)
+        })
+    }, [])
+
+    
     const onDelete = (Title) =>{
         setMovies(state => state.filter(x => x.Title !== Title))
     }
@@ -21,7 +30,7 @@ function  MovieList(
 
     return(
         movies.map(movie => 
-            <li key = {movie.Title}><Movie {...movie}  onDelete = {onDelete} onSelect = {onSelect}/></li>
+            <li key = {movie.Title} ><Movie {...movie}   onDelete = {onDelete} onSelect = {onSelect}/></li>
         )
     );
 }

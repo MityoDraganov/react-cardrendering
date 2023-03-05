@@ -1,0 +1,27 @@
+.movies-list{
+    display: grid;
+    list-style-type: none;
+    justify-content: space-between;
+    align-content: space-evenly;
+    justify-items: start;
+
+    padding-left: 5%;
+    grid-template-columns: repeat(4, 1fr);
+
+    grid-auto-rows: auto;
+
+    grid-gap: 1rem;
+}
+
+.options-ul{
+    list-style-type: none;
+
+    height: 100%;
+    width: 50px;
+    position: fixed;
+    
+    top: 0;
+    left: 0;
+    background-color: rgb(39, 109, 156);
+    overflow-x: hidden;
+}
